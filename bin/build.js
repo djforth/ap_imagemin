@@ -1,8 +1,8 @@
 #! /usr/bin/env node
 
-var config    = require("./plugin/config")
+var config    = require("../plugin/config")
  , folder     = require("@djforth/ap_utils").folder_helpers
- , imagemin    = require('./plugin/imagemin_build')()
+ , imagemin    = require('../plugin/imagemin_build')()
  , program     = require('commander')
  , watchFolder = require("@djforth/ap_utils").watcher;
 
