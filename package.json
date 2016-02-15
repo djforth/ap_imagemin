@@ -3,6 +3,9 @@
   "version": "1.0.1",
   "description": "Asset Pipeline plugin for imagemin",
   "main": "index.js",
+  "bin": {
+    "asset-pipeline-imagemin": "./bin/build.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -40,9 +43,6 @@
     "imagemin": "^4.0.0",
     "imagemin-newer": "^1.0.1",
     "lodash": "^4.3.0"
-  },
-  "bin": {
-    "ap_imagemin": "build.js"
   },
   "dependencies": {}
 }
