@@ -15,7 +15,7 @@ function addPlugins(plugins){
 
   return function(imgmin){
     plugins.forEach(function(p){
-      img_min.use(p)
+      imgmin.use(p)
     });
   }
 }
