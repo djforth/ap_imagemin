@@ -45,7 +45,7 @@ module.exports = function(){
         });
     }
   , addExt:function(ext){
-      if(_.isUndefined(ext)) return obj;
+      if(_.isEmpty(ext)) return obj;
       ext_list = ext.join(",").replace(/\*./g, "");
       return obj
     }
@@ -58,6 +58,9 @@ module.exports = function(){
       if(_.isUndefined(output)) return obj;
       dest = path.resolve(output)
       return obj;
+    }
+  , getExt:function(){
+      return ext_list
     }
   , getInput:function(){
       return dest;

@@ -21,8 +21,8 @@ imagemin
   .addExt(program.ext)
 
 folder.clearFolder(
-      config.output
-    , config.ext
+      imagemin.getInput()
+    , imagemin.getExt()
     , function(){
       imagemin.build();
     })

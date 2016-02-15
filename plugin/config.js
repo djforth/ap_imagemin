@@ -1,5 +1,5 @@
-var _ = require("lodash")
-  , path        = require("path")
+var _    = require("lodash")
+  , path = require("path")
 
 
 function setPaths(key, def){
