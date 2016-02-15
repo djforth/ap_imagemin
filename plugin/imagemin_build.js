@@ -45,7 +45,7 @@ module.exports = function(){
         });
     }
   , addExt:function(ext){
-      if(_.isUndefined(eimagemin-newert)) return obj;
+      if(_.isUndefined(ext)) return obj;
       ext_list = ext.join(",").replace(/\*./g, "");
       return obj
     }
@@ -65,5 +65,5 @@ module.exports = function(){
 
   }
 
-  return obj;
+  return obj
 }
