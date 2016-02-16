@@ -26,16 +26,10 @@
   },
   "homepage": "https://github.com/djforth/ap_imagemin#readme",
   "devDependencies": {
-    "@djforth/ap_utils": "^1.1.0",
     "chai": "^3.4.1",
-    "commander": "^2.9.0",
     "eslint": "^1.6.0",
     "eslint-config-google": "^0.3.0",
-    "imagemin": "^4.0.0",
-    "imagemin-newer": "^1.0.1",
-    "lodash": "^4.3.0",
-    "mocha": "^2.3.4",
-    "rewireify": "^0.2.5"
+    "mocha": "^2.3.4"
   },
   "dependancies": {
     "@djforth/ap_utils": "^1.1.0",
