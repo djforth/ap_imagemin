@@ -1,10 +1,11 @@
 #! /usr/bin/env node
 
-var config     = require("../plugin/config")
- , remove      = require("@djforth/ap_utils").delete
- , Imagemin    = require('../plugin/imagemin_build')
- , program     = require('commander')
- , watchFolder = require("@djforth/ap_utils").watcher;
+var _       = require("lodash")
+ , config   = require("../plugin/config")
+ , remove   = require("@djforth/ap_utils").delete
+ , Imagemin = require('../plugin/imagemin_build')
+ , program  = require('commander')
+ , watch    = require("@djforth/ap_utils").watcher;
 
 
  program
@@ -25,11 +26,11 @@ options.forEach(function(op){
 
 var imgmin = Imagemin();
 
-var clear = remove(config.get("output"), config.get("ext"))
+var clear = remove.folder(config.get("output"), config.get("ext"))
 clear(function(){
-  imgmin.build();
+  imgmin();
 })
 
 if(program.watch){
-  watchFolder(config.get("input")).onAdd(imgmin.build);
+  watch(config.get("input")).onAdd(imgmin);
 }
