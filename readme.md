@@ -5,7 +5,7 @@ This is a wrapper for imagemin that will eventually become a plugin for a larger
 It can be used however on it's own.  To install run:
 
 ```bash
-npm install @djforth/ap_imagemin
+npm install @djforth/ap_imagemin -g
 ```
 
 
@@ -62,4 +62,21 @@ To run with defaults or config:
 
 ```bash
 asset-pipeline-imagemin
+```
+
+Options are:
+
+```bash
+asset-pipeline-imagemin -h
+
+  Usage: asset-pipeline-imagemin [options]
+
+  Options:
+
+    -h, --help             output usage information
+    -V, --version          output the version number
+    -e, --ext <list>       exts to process
+    -i, --input <folder>   input folder
+    -o, --output <folder>  output folder
+    -w, --watch            Watch scripts
 ```

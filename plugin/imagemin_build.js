@@ -1,6 +1,5 @@
 var _        = require('lodash')
   , config   = require("./config")
-  , folder   = require("@djforth/ap_utils").folder_helpers
   , Imagemin = require('imagemin')
   , newer    = require('imagemin-newer')
   , path     = require('path');
@@ -22,51 +21,26 @@ function addPlugins(plugins){
 
 
 module.exports = function(){
-  var callback, ext_list, img_path, ip;
-  ext_list = config.ext.join(",").replace(/\*./g, "");
+  var ext_list, input, dest, plugins;
+  ext_list = config.get("ext").join(",").replace(/\*./g, "");
 
-  ip   = config.input;
-  dest = config.output;
-  var plugins = addPlugins(config.plugins);
+  input   = config.get("input")+"/**/*.{"+ext_list+"}";
+  dest    = config.get("output");
+  plugins = addPlugins(config.get("plugins"));
 
-  var obj = {
-    build:function(cb){
-      var img_min = new Imagemin()
-        .src(ip+"/**/*.{"+ext_list+"}")
-        .use(newer(dest));
+  return function(cb){
+    var img_min = new Imagemin()
+      .src(input)
+      .use(newer(dest));
 
-      plugins(img_min)
-      img_min.dest(dest)
-        .run(function(err, files) {
-          if(err)
-            console.error(err)
-          else if(_.isFunction(cb))
-            cb();
-        });
-    }
-  , addExt:function(ext){
-      if(_.isEmpty(ext)) return obj;
-      ext_list = ext.join(",").replace(/\*./g, "");
-      return obj
-    }
-  , addInput:function(input){
-      if(_.isUndefined(input)) return obj;
-      ip = path.resolve(input)
-      return obj;
-    }
-  , addOutput:function(output){
-      if(_.isUndefined(output)) return obj;
-      dest = path.resolve(output)
-      return obj;
-    }
-  , getExt:function(){
-      return ext_list
-    }
-  , getInput:function(){
-      return dest;
-    }
-
+    plugins(img_min)
+    img_min.dest(dest)
+      .run(function(err, files) {
+        if(err)
+          console.error(err)
+        else if(_.isFunction(cb))
+          cb();
+      });
   }
 
-  return obj
 }

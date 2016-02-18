@@ -1,4 +1,5 @@
 var _    = require("lodash")
+  , utils  = require("@djforth/ap_utils").config
   , path = require("path")
 
 
@@ -10,7 +11,9 @@ function setPaths(key, def){
 }
 
 var defaults = {
-    ext        : [
+      input    : path.resolve("app/assets_uncompiled/images")
+    , output   : path.resolve("public/assets")
+  ,  ext        : [
       "*.png"
     , "*.gif"
     , "*.jpg"
@@ -25,21 +28,23 @@ var defaults = {
   ]
 }
 
-var pckage    = require(path.resolve("./package.json"));
+var config = utils(defaults, "images")
 
-if(!_.isUndefined(pckage.assets)){
+// var pckage    = require(path.resolve("./package.json"));
 
-  if(pckage.assets.assets_in){
-    defaults = _.defaults({input:path.join(pckage.assets.assets_in, "images")}, defaults)
-  }
+// if(!_.isUndefined(pckage.assets)){
 
-  if(pckage.assets.assets_out){
-    defaults = _.defaults({output:path.join(pckage.assets.assets_out)}, defaults);
-  }
+//   if(pckage.assets.assets_in){
+//     defaults = _.defaults({input:path.join(pckage.assets.assets_in, "images")}, defaults)
+//   }
 
-  if(pckage.assets.images){
-    defaults  = _.defaults(pckage.assets.images, defaults);
-  }
-}
+//   if(pckage.assets.assets_out){
+//     defaults = _.defaults({output:path.join(pckage.assets.assets_out)}, defaults);
+//   }
 
-module.exports = defaults;
+//   if(pckage.assets.images){
+//     defaults  = _.defaults(pckage.assets.images, defaults);
+//   }
+// }
+
+module.exports = config;

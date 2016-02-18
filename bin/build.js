@@ -1,33 +1,35 @@
 #! /usr/bin/env node
 
-var config    = require("../plugin/config")
- , folder     = require("@djforth/ap_utils").folder_helpers
- , imagemin    = require('../plugin/imagemin_build')()
+var config     = require("../plugin/config")
+ , remove      = require("@djforth/ap_utils").delete
+ , Imagemin    = require('../plugin/imagemin_build')
  , program     = require('commander')
  , watchFolder = require("@djforth/ap_utils").watcher;
 
 
  program
   .version('0.0.1')
-  .option('-e, --ext <list>', 'exts to process', [])
+  .option('-e, --ext <list>', 'exts to process')
   .option('-i, --input <folder>', 'input folder')
   .option('-o, --output <folder>', 'output folder')
   .option('-w, --watch', 'Watch scripts')
   .parse(process.argv);
 
-imagemin
-  .addInput(program.input)
-  .addOutput(program.output)
-  .addExt(program.ext)
+var options = ["ext", "input", "output"]
 
-folder.clearFolder(
-      imagemin.getInput()
-    , imagemin.getExt()
-    , function(){
-      imagemin.build();
-    })
+options.forEach(function(op){
+  if(!_.isEmpty(program[op]) || program[op]){
+    config.set(op, program[op])
+  }
+});
 
+var imgmin = Imagemin();
+
+var clear = remove(config.get("output"), config.get("ext"))
+clear(function(){
+  imgmin.build();
+})
 
 if(program.watch){
-  watchFolder(imagemin.getInput()).onAdd(imagemin.build);
+  watchFolder(config.get("input")).onAdd(imgmin.build);
 }
