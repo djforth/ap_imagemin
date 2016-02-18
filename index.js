@@ -1,1 +1,4 @@
-module.exports = require('./plugin/imagemin_build');
+module.exports = {
+    build  : require('./plugin/imagemin_build')
+  , config : require('./plugin/config')
+}
