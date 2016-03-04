@@ -32,10 +32,10 @@
     "mocha": "^2.3.4"
   },
   "dependencies": {
-    "@djforth/ap_utils": "^2.0.8",
+    "@djforth/ap_utils": "^2.0.9",
     "commander": "^2.9.0",
     "imagemin": "^4.0.0",
     "imagemin-newer": "^1.0.1",
-    "lodash": "^4.3.0"
+    "lodash": "^4.6.0"
   }
 }
