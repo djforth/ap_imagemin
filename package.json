@@ -1,6 +1,6 @@
 {
   "name": "@djforth/ap_imagemin",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Asset Pipeline plugin for imagemin",
   "main": "index.js",
   "bin": {
@@ -38,7 +38,7 @@
     "imagemin-newer": "^1.0.1",
     "lodash": "^4.6.0"
   },
-  "peerDependancies":{
+  "peerDependancies": {
     "@djforth/ap_utils": "^2.0.13"
   }
 }
