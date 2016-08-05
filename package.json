@@ -1,6 +1,6 @@
 {
   "name": "@djforth/ap_imagemin",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Asset Pipeline plugin for imagemin",
   "main": "index.js",
   "bin": {
@@ -28,8 +28,8 @@
   "eslintConfig": {
     "extends": "morsedigital",
     "rules": {
-      "no-console": 0
-      , "require-jsdoc": 0
+      "no-console": 0,
+      "require-jsdoc": 0
     }
   },
   "devDependencies": {
