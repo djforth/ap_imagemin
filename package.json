@@ -28,7 +28,8 @@
   "eslintConfig": {
     "extends": "morsedigital",
     "rules": {
-      "require-jsdoc": 0
+      "no-console": 0
+      , "require-jsdoc": 0
     }
   },
   "devDependencies": {
@@ -42,7 +43,11 @@
   "dependencies": {
     "commander": "^2.9.0",
     "imagemin": "^5.2.2",
+    "imagemin-gifsicle": "^5.1.0",
+    "imagemin-jpegtran": "^5.0.2",
     "imagemin-newer": "^1.0.2",
+    "imagemin-optipng": "^5.1.1",
+    "imagemin-svgo": "^5.1.0",
     "lodash": "^4.14.1"
   },
   "peerDependancies": {

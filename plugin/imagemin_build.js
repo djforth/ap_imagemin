@@ -1,46 +1,47 @@
-var _        = require('lodash')
-  , config   = require("./config")
-  , Imagemin = require('imagemin')
-  , newer    = require('imagemin-newer')
-  , path     = require('path');
-
+var _        = require('lodash');
+var config   = require('./config');
+var Imagemin = require('imagemin')
+  , newer    = require('imagemin-newer');
 
 function addPlugins(plugins){
-  plugins = _.map(plugins, function(p){
-    if(_.isString(p)) return require(p)();
-    if(_.isArray(p)) return require(p[0])(p[1]);
-    console.error(p+"is not valid array or string");
+  return plugins.map(function(p){
+    if (_.isString(p)) return require(p)();
+    if (_.isArray(p)) return require(p[0])(p[1]);
+    console.error(p + 'is not valid array or string');
+    return null;
   });
-
-  return function(imgmin){
-    plugins.forEach(function(p){
-      imgmin.use(p)
-    });
-  }
 }
 
+function getExtList(ext){
+  return ext.join(',').replace(/\*./g, '');
+}
+
+function getInput(input, ext_list){
+  return config.get('input') + '/**/*.{' + ext_list + '}';
+}
 
 module.exports = function(){
   var ext_list, input, dest, plugins;
-  ext_list = config.get("ext").join(",").replace(/\*./g, "");
+  ext_list = getExtList(config.get('ext'));
 
-  input   = config.get("input")+"/**/*.{"+ext_list+"}";
-  dest    = config.get("output");
-  plugins = addPlugins(config.get("plugins"));
-
+  input   = getInput(config.get('input'), ext_list);
+  dest    = config.get('output');
+  plugins = addPlugins(config.get('plugins'));
+  plugins = [newer(dest)].concat(plugins);
   return function(cb){
-    var img_min = new Imagemin()
-      .src(input)
-      .use(newer(dest));
-
-    plugins(img_min)
-    img_min.dest(dest)
-      .run(function(err, files) {
-        if(err)
-          console.error(err)
-        else if(_.isFunction(cb))
-          cb();
-      });
-  }
-
-}
+    Imagemin(
+      [input]
+      , dest
+      , {plugins: plugins}
+    ).then(function(files){
+      console.log(files);
+      if (_.isFunction(cb)){
+        cb(files);
+      }
+    }).catch(function(err){
+      if (err){
+        console.error(err);
+      }
+    });
+  };
+};
