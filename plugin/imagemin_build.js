@@ -1,7 +1,7 @@
 var _        = require('lodash');
 var config   = require('./config');
-var Imagemin = require('imagemin')
-  , newer    = require('imagemin-newer');
+var Imagemin = require('imagemin');
+  // , newer    = require('imagemin-newer');
 
 function addPlugins(plugins){
   return plugins.map(function(p){
@@ -27,14 +27,14 @@ module.exports = function(){
   input   = getInput(config.get('input'), ext_list);
   dest    = config.get('output');
   plugins = addPlugins(config.get('plugins'));
-  plugins = [newer(dest)].concat(plugins);
+  // plugins = [newer(dest)].concat(plugins); // Removing for now
   return function(cb){
     Imagemin(
       [input]
       , dest
-      , {plugins: plugins}
+      , {use: plugins}
     ).then(function(files){
-      console.log(files);
+      // console.log(files);
       if (_.isFunction(cb)){
         cb(files);
       }
