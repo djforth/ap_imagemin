@@ -7,7 +7,12 @@ var getPlugins = require('./get_plugins');
 module.exports = function(file, path){
   var plugins, dest;
   dest   =  config.get('output') + file;
-  remove(dest); // Remove old file
+  try {
+    remove(dest); // Remove old file
+  } catch (err){
+    console.log('No file', err);
+  }
+
   plugins = getPlugins(config.get('plugins'));
 
   return function(cb){
