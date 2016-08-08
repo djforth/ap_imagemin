@@ -1,23 +1,18 @@
 var _        = require('lodash');
 var config   = require('./config');
 var Imagemin = require('imagemin');
-  // , newer    = require('imagemin-newer');
-
+var remove   = require('@djforth/ap_utils').delete.file;
 var getPlugins = require('./get_plugins');
-var getExtList = require('./get_input').getExtList;
-var getInput = require('./get_input').getInput;
 
-module.exports = function(){
-  var ext_list, input, dest, plugins;
-  ext_list = getExtList(config.get('ext'));
-
-  input   = getInput(config.get('input'), ext_list);
-  dest    = config.get('output');
+module.exports = function(file, path){
+  var plugins, dest;
+  dest   =  config.get('output') + file;
+  remove(dest); // Remove old file
   plugins = getPlugins(config.get('plugins'));
-  // plugins = [newer(dest)].concat(plugins); // Removing for now
+
   return function(cb){
     Imagemin(
-      [input]
+      [path]
       , dest
       , {use: plugins}
     ).then(function(files){
