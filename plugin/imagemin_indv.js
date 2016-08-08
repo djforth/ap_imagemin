@@ -4,9 +4,16 @@ var Imagemin = require('imagemin');
 var remove   = require('@djforth/ap_utils').delete.file;
 var getPlugins = require('./get_plugins');
 
+function get_dest(input, output){
+  return function(path){
+    return path.replace(input, output);
+  };
+}
+
 module.exports = function(file, path){
   var plugins, dest;
-  dest   =  config.get('output') + file;
+  dest = get_dest(config.get('input'), config.get('output'))(file);
+
   try {
     remove(dest); // Remove old file
   } catch (err){
