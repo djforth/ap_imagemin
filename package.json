@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "commander": "^2.9.0",
-    "imagemin": "^5.2.2",
+    "imagemin": "git+https://github.com/djforth/imagemin",
     "imagemin-gifsicle": "^5.1.0",
     "imagemin-jpegtran": "^5.0.2",
     "imagemin-newer": "^1.0.2",
