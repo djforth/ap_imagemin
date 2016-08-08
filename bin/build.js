@@ -32,5 +32,5 @@ clear(function(){
 });
 
 if (program.watch){
-  watch(config.get('input')).onAdd(ImageminInd).onChange(ImageminInd);
+  watch(config.get('input')).onAdd(ImageminInd).addChange(ImageminInd);
 }

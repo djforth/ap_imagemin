@@ -33,7 +33,7 @@
     }
   },
   "devDependencies": {
-    "@djforth/ap_utils": "^2.1.1",
+    "@djforth/ap_utils": "^2.2.0",
     "chai": "^3.5.0",
     "eslint": "^3.2.2",
     "eslint-config-morsedigital": "^1.0.3",
@@ -51,6 +51,6 @@
     "lodash": "^4.14.1"
   },
   "peerDependancies": {
-    "@djforth/ap_utils": "^2.1.1"
+    "@djforth/ap_utils": "^2.*.*"
   }
 }
