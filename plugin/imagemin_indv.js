@@ -12,7 +12,8 @@ function get_dest(input, output){
 
 module.exports = function(file, path){
   var plugins, dest;
-  dest = get_dest(config.get('input'), config.get('output'))(file);
+  let output = config.get('output').replace(file, '');
+  dest = get_dest(config.get('input'), output)(path);
 
   try {
     remove(dest); // Remove old file
@@ -25,7 +26,7 @@ module.exports = function(file, path){
   return function(cb){
     Imagemin(
       [path]
-      , dest
+      , dest.replace(file, '')
       , {use: plugins}
     ).then(function(files){
       if (_.isFunction(cb)){
