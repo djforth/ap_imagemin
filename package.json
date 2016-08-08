@@ -1,6 +1,6 @@
 {
   "name": "@djforth/ap_imagemin",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Asset Pipeline plugin for imagemin",
   "main": "index.js",
   "bin": {
