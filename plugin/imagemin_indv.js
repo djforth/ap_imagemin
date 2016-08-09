@@ -28,9 +28,7 @@ module.exports = function(file, path){
     , dest.replace(file, '')
     , {use: plugins}
   ).then(function(files){
-    if (_.isFunction(cb)){
-      cb(files);
-    }
+
   }).catch(function(err){
     if (err){
       console.error(err);
