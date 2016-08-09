@@ -23,12 +23,13 @@ module.exports = function(file, path){
 
   plugins = getPlugins(config.get('plugins'));
 
+
   Imagemin(
     [path]
     , dest.replace(file, '')
     , {use: plugins}
   ).then(function(files){
-
+    //
   }).catch(function(err){
     if (err){
       console.error(err);
