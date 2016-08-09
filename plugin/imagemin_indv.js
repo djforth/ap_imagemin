@@ -23,19 +23,17 @@ module.exports = function(file, path){
 
   plugins = getPlugins(config.get('plugins'));
 
-  return function(cb){
-    Imagemin(
-      [path]
-      , dest.replace(file, '')
-      , {use: plugins}
-    ).then(function(files){
-      if (_.isFunction(cb)){
-        cb(files);
-      }
-    }).catch(function(err){
-      if (err){
-        console.error(err);
-      }
-    });
-  };
+  Imagemin(
+    [path]
+    , dest.replace(file, '')
+    , {use: plugins}
+  ).then(function(files){
+    if (_.isFunction(cb)){
+      cb(files);
+    }
+  }).catch(function(err){
+    if (err){
+      console.error(err);
+    }
+  });
 };
