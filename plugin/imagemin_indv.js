@@ -23,7 +23,6 @@ module.exports = function(file, path){
 
   plugins = getPlugins(config.get('plugins'));
 
-
   Imagemin(
     [path]
     , dest.replace(file, '')
