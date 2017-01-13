@@ -1,6 +1,6 @@
 {
   "name": "ap_imagemin",
-  "version": "0.0.0-pre",
+  "version": "1.0.0-pre",
   "description": "Asset Pipeline plugin for imagemin",
   "main": "index.js",
   "bin": {
@@ -33,12 +33,13 @@
     }
   },
   "devDependencies": {
+    "ap_utils": "^0.0.0-pre.1",
     "chai": "^3.5.0",
     "eslint-config-morsedigital": "^1.1.0",
-    "mocha": "^3.0.1"
+    "lodash": "^4.17.4",
+    "mocha": "^3.2.0"
   },
   "dependencies": {
-    "ap_utils": "^0.0.0-pre.1",
     "commander": "^2.9.0",
     "imagemin": "git+https://github.com/djforth/imagemin",
     "imagemin-gifsicle": "^5.1.0",
@@ -46,9 +47,9 @@
     "imagemin-newer": "^1.0.2",
     "imagemin-optipng": "^5.1.1",
     "imagemin-svgo": "^5.1.0",
-    "lodash": "^4.14.1"
   },
   "peerDependancies": {
-    "ap_utils": "^0.0.0-pre.1"
+    "ap_utils": "^0.0.0-pre.1",
+    "lodash": "^4.17.4"
   }
 }
